@@ -1,19 +1,22 @@
 package com.agilitysolutions.mapping.geocoding.library;
 
 public class Bounds {
-    private Location southwest;
-    private Location northeast;
+    private Location _southwest;
+    private Location _northeast;
 
-    public Bounds(Location northeast, Location southwest) {
-        this.northeast = northeast;
-        this.southwest = southwest;
+    public void setSouthwest(Location southwest) {
+        _southwest = southwest;
     }
 
     public Location getSouthwest() {
-        return southwest;
+        return _southwest;
+    }
+
+    public void setNortheast(Location northeast) {
+        _northeast = northeast;
     }
 
     public Location getNortheast() {
-        return northeast;
+        return _northeast;
     }
 }

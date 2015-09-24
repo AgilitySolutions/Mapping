@@ -5,49 +5,49 @@ import com.agilitysolutions.mapping.geocoding.library.enums.AddressComponentType
 import java.util.List;
 
 public class Result {
-    private List<AddressComponentType> addressComponentTypes;
-    private String formattedAddress;
-    private List<AddressComponent> addressComponents;
-    private Geometry geometry;
-    private boolean partialMatch;
+    private List<AddressComponentType> _addressComponentTypes;
+    private String _formattedAddress;
+    private List<AddressComponent> _addressComponents;
+    private Geometry _geometry;
+    private boolean _partialMatch;
 
     public List<AddressComponentType> getAddressComponentTypes() {
-        return addressComponentTypes;
+        return _addressComponentTypes;
     }
 
     public void setAddressComponentTypes(List<AddressComponentType> addressComponentTypes) {
-        this.addressComponentTypes = addressComponentTypes;
+        _addressComponentTypes = addressComponentTypes;
     }
 
     public String getFormattedAddress() {
-        return formattedAddress;
+        return _formattedAddress;
     }
 
     public void setFormattedAddress(String formattedAddress) {
-        this.formattedAddress = formattedAddress;
+        _formattedAddress = formattedAddress;
     }
 
     public List<AddressComponent> getAddressComponents() {
-        return addressComponents;
+        return _addressComponents;
     }
 
     public void setAddressComponents(List<AddressComponent> addressComponents) {
-        this.addressComponents = addressComponents;
+        _addressComponents = addressComponents;
     }
 
     public Geometry getGeometry() {
-        return geometry;
+        return _geometry;
     }
 
     public void setGeometry(Geometry geometry) {
-        this.geometry = geometry;
+        _geometry = geometry;
     }
 
     public boolean isPartialMatch() {
-        return partialMatch;
+        return _partialMatch;
     }
 
     public void setPartialMatch(boolean partialMatch) {
-        this.partialMatch = partialMatch;
+        _partialMatch = partialMatch;
     }
 }

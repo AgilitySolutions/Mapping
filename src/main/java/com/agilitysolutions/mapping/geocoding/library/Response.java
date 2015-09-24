@@ -5,22 +5,22 @@ import com.agilitysolutions.mapping.geocoding.library.enums.StatusCode;
 import java.util.List;
 
 public class Response {
-    private StatusCode statusCode;
-    private List<Result> Results;
+    private StatusCode _statusCode;
+    private List<Result> _results;
 
     public StatusCode getStatusCode() {
-        return statusCode;
+        return _statusCode;
     }
 
     public void setStatusCode(StatusCode statusCode) {
-        this.statusCode = statusCode;
+        _statusCode = statusCode;
     }
 
     public List<Result> getResults() {
-        return Results;
+        return _results;
     }
 
     public void setResults(List<Result> results) {
-        Results = results;
+        _results = results;
     }
 }

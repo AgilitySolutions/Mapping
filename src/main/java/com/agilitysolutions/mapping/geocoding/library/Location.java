@@ -3,24 +3,22 @@ package com.agilitysolutions.mapping.geocoding.library;
 import java.math.BigDecimal;
 
 public class Location {
-    private BigDecimal latitude;
-    private BigDecimal longitude;
+    private BigDecimal _latitude;
+    private BigDecimal _longitude;
 
-    public Location(BigDecimal latitude, BigDecimal longitude) {
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
-
-    public Location(double latitude, double longitude) {
-        this.latitude = BigDecimal.valueOf(latitude);
-        this.longitude = BigDecimal.valueOf(longitude);
+    public void setLatitude(BigDecimal latitude) {
+        _latitude = latitude;
     }
 
     public BigDecimal getLatitude() {
-        return latitude;
+        return _latitude;
+    }
+
+    public void setLongitude(BigDecimal longitude) {
+        _longitude = longitude;
     }
 
     public BigDecimal getLongitude() {
-        return longitude;
+        return _longitude;
     }
 }

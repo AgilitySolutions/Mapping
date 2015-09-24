@@ -1,57 +1,49 @@
 package com.agilitysolutions.mapping.geocoding.library;
 
 public class Request {
-    private String address;
-    private String language;
-    private String region;
-    private Bounds bounds;
-    private Location location;
+    private String _address;
+    private String _language;
+    private String _region;
+    private Bounds _bounds;
+    private Location _location;
 
     public String getAddress() {
-        return address;
+        return _address;
+    }
+
+    public void setAddress(String address) {
+        _address = address;
     }
 
     public String getLanguage() {
-        return language;
+        return _language;
+    }
+
+    public void setLanguage(String language) {
+        _language = language;
     }
 
     public String getRegion() {
-        return region;
+        return _region;
+    }
+
+    public void setRegion(String region) {
+        _region = region;
     }
 
     public Bounds getBounds() {
-        return bounds;
+        return _bounds;
+    }
+
+    public void setBounds(Bounds bounds) {
+        _bounds = bounds;
     }
 
     public Location getLocation() {
-        return location;
+        return _location;
     }
 
-    public Request(String address) {
-        initialize();
-        this.address = address;
-    }
-
-    public Request(String address, Bounds bounds) {
-        this(address);
-        this.bounds = bounds;
-    }
-
-    public Request(String address, String region) {
-        this(address);
-        this.region = region;
-    }
-
-    public Request(Location location) {
-        initialize();
-        this.location = location;
-    }
-
-    protected void initialize() {
-        this.address = null;
-        this.language = "en";
-        this.region = null;
-        this.bounds = null;
-        this.location = null;
+    public void setLocation(Location location) {
+        _location = location;
     }
 }

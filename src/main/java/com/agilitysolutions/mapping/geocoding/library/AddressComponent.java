@@ -5,31 +5,31 @@ import com.agilitysolutions.mapping.geocoding.library.enums.AddressComponentType
 import java.util.List;
 
 public class AddressComponent {
-    private String longName;
-    private String shortName;
-    private List<AddressComponentType> addressComponentTypes;
+    private String _longName;
+    private String _shortName;
+    private List<AddressComponentType> _addressComponentTypes;
 
     public String getLongName() {
-        return longName;
+        return _longName;
     }
 
     public void setLongName(String longName) {
-        this.longName = longName;
+        _longName = longName;
     }
 
     public String getShortName() {
-        return shortName;
+        return _shortName;
     }
 
     public void setShortName(String shortName) {
-        this.shortName = shortName;
+        _shortName = shortName;
     }
 
     public List<AddressComponentType> getAddressComponentTypes() {
-        return addressComponentTypes;
+        return _addressComponentTypes;
     }
 
     public void setAddressComponentTypes(List<AddressComponentType> addressComponentTypes) {
-        this.addressComponentTypes = addressComponentTypes;
+        _addressComponentTypes = addressComponentTypes;
     }
 }

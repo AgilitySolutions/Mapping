@@ -1,19 +1,22 @@
 package com.agilitysolutions.mapping.geocoding.library;
 
 public class Viewport {
-    private Location southwest;
-    private Location northeast;
-
-    public Viewport(Location northeast, Location southwest) {
-        this.northeast = northeast;
-        this.southwest = southwest;
-    }
+    private Location _southwest;
+    private Location _northeast;
 
     public Location getSouthwest() {
-        return southwest;
+        return _southwest;
+    }
+
+    public void setSouthwest(Location southwest) {
+        _southwest = southwest;
     }
 
     public Location getNortheast() {
-        return northeast;
+        return _northeast;
+    }
+
+    public void setNortheast(Location northeast) {
+        _northeast = northeast;
     }
 }

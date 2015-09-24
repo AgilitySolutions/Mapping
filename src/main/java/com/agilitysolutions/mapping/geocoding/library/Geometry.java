@@ -4,31 +4,31 @@ package com.agilitysolutions.mapping.geocoding.library;
 import com.agilitysolutions.mapping.geocoding.library.enums.LocationType;
 
 public class Geometry {
-    private Location location;
-    private LocationType locationType;
-    private Viewport viewport;
+    private Location _location;
+    private LocationType _locationType;
+    private Viewport _viewport;
 
     public Location getLocation() {
-        return location;
+        return _location;
     }
 
     public void setLocation(Location location) {
-        this.location = location;
+        _location = location;
     }
 
     public LocationType getLocationType() {
-        return locationType;
+        return _locationType;
     }
 
     public void setLocationType(LocationType locationType) {
-        this.locationType = locationType;
+        _locationType = locationType;
     }
 
     public Viewport getViewport() {
-        return viewport;
+        return _viewport;
     }
 
     public void setViewport(Viewport viewport) {
-        this.viewport = viewport;
+        _viewport = viewport;
     }
 }
