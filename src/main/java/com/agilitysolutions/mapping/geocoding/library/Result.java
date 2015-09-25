@@ -43,7 +43,7 @@ public class Result {
         _geometry = geometry;
     }
 
-    public boolean isPartialMatch() {
+    public boolean getPartialMatch() {
         return _partialMatch;
     }
 
