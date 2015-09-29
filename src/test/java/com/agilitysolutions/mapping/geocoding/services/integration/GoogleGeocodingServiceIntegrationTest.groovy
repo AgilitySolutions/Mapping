@@ -1,6 +1,5 @@
 package com.agilitysolutions.mapping.geocoding.services.integration
 
-import com.agilitysolutions.mapping.geocoding.library.Bounds
 import com.agilitysolutions.mapping.geocoding.library.Location
 import com.agilitysolutions.mapping.geocoding.library.Request
 import com.agilitysolutions.mapping.geocoding.library.Response
