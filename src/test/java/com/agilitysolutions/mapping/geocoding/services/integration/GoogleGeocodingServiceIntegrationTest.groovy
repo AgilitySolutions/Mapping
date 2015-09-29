@@ -5,6 +5,7 @@ import com.agilitysolutions.mapping.geocoding.library.Location
 import com.agilitysolutions.mapping.geocoding.library.Request
 import com.agilitysolutions.mapping.geocoding.library.Response
 import com.agilitysolutions.mapping.geocoding.library.enums.AddressComponentType
+import com.agilitysolutions.mapping.geocoding.library.enums.LocationType
 import com.agilitysolutions.mapping.geocoding.library.enums.StatusCode
 import com.agilitysolutions.mapping.geocoding.request.builders.GoogleGeocoderRequestBuilder
 import com.agilitysolutions.mapping.geocoding.request.handlers.GoogleGeocoderRequestHandler
@@ -116,6 +117,17 @@ class GoogleGeocodingServiceIntegrationTest extends GroovyTestCase {
         assertEquals("1295", addressComponent.getShortName());
         assertEquals(1, addressComponent.getAddressComponentTypes().size());
         assertEquals(null, addressComponent.getAddressComponentTypes()[0])
+
+        def geometry = result.getGeometry();
+
+        assertEquals(LocationType.RangeInterpolated, geometry.getLocationType());
+        assertEquals(39.6276977, geometry.getLocation().getLatitude());
+        assertEquals(-82.93448939999999, geometry.getLocation().getLongitude());
+
+        assertEquals(39.62635581970851, geometry.getViewport().getSouthwest().getLatitude());
+        assertEquals(-82.93583823029149, geometry.getViewport().getSouthwest().getLongitude());
+        assertEquals(39.6290537802915, geometry.getViewport().getNortheast().getLatitude());
+        assertEquals(-82.93314026970849, geometry.getViewport().getNortheast().getLongitude());
     }
 
     void testLocation() {
@@ -128,6 +140,39 @@ class GoogleGeocodingServiceIntegrationTest extends GroovyTestCase {
         request.setLocation(location);
 
         Response response = _googleGeocodingService.getGeocode(request);
+
+        assertEquals(StatusCode.Ok, response.getStatusCode());
+        assertEquals(1, response.getResults().size());
+
+        def result = response.getResults()[0];
+
+        assertEquals("Antarctica", result.getFormattedAddress());
+        assertFalse(result.getPartialMatch())
+        assertEquals(2, result.getAddressComponentTypes().size());
+        assertEquals(1, result.getAddressComponents().size());
+
+        assertEquals(AddressComponentType.Country, result.getAddressComponentTypes()[0])
+        assertEquals(AddressComponentType.Political, result.getAddressComponentTypes()[1])
+
+        def addressComponent = result.getAddressComponents()[0];
+
+        assertEquals("Antarctica", addressComponent.getLongName());
+        assertEquals("AQ", addressComponent.getShortName());
+        assertEquals(2, addressComponent.getAddressComponentTypes().size());
+
+        assertEquals(AddressComponentType.Country, addressComponent.getAddressComponentTypes()[0])
+        assertEquals(AddressComponentType.Political, addressComponent.getAddressComponentTypes()[1])
+
+        def geometry = result.getGeometry();
+
+        assertEquals(LocationType.Approximate, geometry.getLocationType());
+        assertEquals(-75.250973, geometry.getLocation().getLatitude());
+        assertEquals(-0.07138899999999999, geometry.getLocation().getLongitude());
+
+        assertEquals(-90, geometry.getViewport().getSouthwest().getLatitude());
+        assertEquals(-180, geometry.getViewport().getSouthwest().getLongitude());
+        assertEquals(-61.0490419, geometry.getViewport().getNortheast().getLatitude());
+        assertEquals(180, geometry.getViewport().getNortheast().getLongitude());
     }
 
     void testPartialAddress() {
@@ -135,6 +180,70 @@ class GoogleGeocodingServiceIntegrationTest extends GroovyTestCase {
         request.setAddress("Winnetka");
 
         Response response = _googleGeocodingService.getGeocode(request);
+
+        assertEquals(StatusCode.Ok, response.getStatusCode());
+        assertEquals(1, response.getResults().size());
+
+        def result = response.getResults()[0];
+
+        assertEquals("Winnetka, IL, USA", result.getFormattedAddress());
+        assertFalse(result.getPartialMatch());
+        assertEquals(2, result.getAddressComponentTypes().size());
+        assertEquals(5, result.getAddressComponents().size());
+
+        assertEquals(AddressComponentType.Locatity, result.getAddressComponentTypes()[0]);
+        assertEquals(AddressComponentType.Political, result.getAddressComponentTypes()[1]);
+
+        def addressComponent = result.getAddressComponents()[0];
+
+        assertEquals("Winnetka", addressComponent.getLongName());
+        assertEquals("Winnetka", addressComponent.getShortName());
+        assertEquals(2, addressComponent.getAddressComponentTypes().size());
+        assertEquals(AddressComponentType.Locatity, addressComponent.getAddressComponentTypes()[0])
+        assertEquals(AddressComponentType.Political, addressComponent.getAddressComponentTypes()[1])
+
+        addressComponent = result.getAddressComponents()[1];
+
+        assertEquals("New Trier", addressComponent.getLongName());
+        assertEquals("New Trier", addressComponent.getShortName());
+        assertEquals(2, addressComponent.getAddressComponentTypes().size());
+        assertEquals(AddressComponentType.AdministrativeAreaLevel3, addressComponent.getAddressComponentTypes()[0])
+        assertEquals(AddressComponentType.Political, addressComponent.getAddressComponentTypes()[1])
+
+        addressComponent = result.getAddressComponents()[2];
+
+        assertEquals("Cook County", addressComponent.getLongName());
+        assertEquals("Cook County", addressComponent.getShortName());
+        assertEquals(2, addressComponent.getAddressComponentTypes().size());
+        assertEquals(AddressComponentType.AdministrativeAreaLevel2, addressComponent.getAddressComponentTypes()[0])
+        assertEquals(AddressComponentType.Political, addressComponent.getAddressComponentTypes()[1])
+
+        addressComponent = result.getAddressComponents()[3];
+
+        assertEquals("Illinois", addressComponent.getLongName());
+        assertEquals("IL", addressComponent.getShortName());
+        assertEquals(2, addressComponent.getAddressComponentTypes().size());
+        assertEquals(AddressComponentType.AdministrativeAreaLevel1, addressComponent.getAddressComponentTypes()[0])
+        assertEquals(AddressComponentType.Political, addressComponent.getAddressComponentTypes()[1])
+
+        addressComponent = result.getAddressComponents()[4];
+
+        assertEquals("United States", addressComponent.getLongName());
+        assertEquals("US", addressComponent.getShortName());
+        assertEquals(2, addressComponent.getAddressComponentTypes().size());
+        assertEquals(AddressComponentType.Country, addressComponent.getAddressComponentTypes()[0])
+        assertEquals(AddressComponentType.Political, addressComponent.getAddressComponentTypes()[1])
+
+        def geometry = result.getGeometry();
+
+        assertEquals(LocationType.Approximate, geometry.getLocationType());
+        assertEquals(42.10808340000001, geometry.getLocation().getLatitude());
+        assertEquals(-87.735895, geometry.getLocation().getLongitude());
+
+        assertEquals(42.0886089, geometry.getViewport().getSouthwest().getLatitude());
+        assertEquals(-87.7708629, geometry.getViewport().getSouthwest().getLongitude());
+        assertEquals(42.1282269, geometry.getViewport().getNortheast().getLatitude());
+        assertEquals(-87.71081629999999, geometry.getViewport().getNortheast().getLongitude());
     }
 
     void testBounds() {
