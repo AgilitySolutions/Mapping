@@ -39,8 +39,7 @@ public class GoogleGeocoderRequestHandler implements IRequestHandler {
         return getResponse(request, geocoder);
     }
 
-    private Response getResponse(Request request, Geocoder geocoder)
-    {
+    private Response getResponse(Request request, Geocoder geocoder) {
         GeocoderRequest geocoderRequest = _requestBuilder.build(request);
 
         GeocodeResponse geocoderResponse = geocoder.geocode(geocoderRequest);
