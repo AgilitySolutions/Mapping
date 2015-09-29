@@ -5,6 +5,7 @@ import com.agilitysolutions.mapping.geocoding.library.Location;
 import com.agilitysolutions.mapping.geocoding.library.Request;
 import com.agilitysolutions.mapping.interfaces.geocoding.request.builders.IRequestBuilder;
 import com.google.code.geocoder.GeocoderRequestBuilder;
+import com.google.code.geocoder.model.GeocoderRequest;
 import com.google.code.geocoder.model.LatLng;
 import com.google.code.geocoder.model.LatLngBounds;
 
@@ -17,7 +18,7 @@ public class GoogleGeocoderRequestBuilder implements IRequestBuilder {
         _geocoderRequestBuilder = geocoderRequestBuilder;
     }
 
-    public Object build(Request request) {
+    public GeocoderRequest build(Request request) {
         _geocoderRequestBuilder.setLanguage(request.getLanguage());
         _geocoderRequestBuilder.setRegion(request.getRegion());
         _geocoderRequestBuilder.setAddress(request.getAddress());

@@ -18,13 +18,13 @@ class GoogleGeocodingServiceTest extends GroovyTestCase {
         _googleGeocodingService = new GoogleGeocodingService(_mockRequestHandler);
     }
 
-    void testInitialize() {
-        _googleGeocodingService.initialize("test client id", "test client key");
-        Mockito.verify(_mockRequestHandler, Mockito.times(1)).initialize("test client id", "test client key");
-    }
-
     void testGetGeocode() {
         _googleGeocodingService.getGeocode(_mockRequest);
         Mockito.verify(_mockRequestHandler, Mockito.times(1)).handle(_mockRequest);
+    }
+
+    void testGetGeocodeWithClientIdAndClientKey() {
+        _googleGeocodingService.getGeocode(_mockRequest, "Test Client Id", "Test Client Key");
+        Mockito.verify(_mockRequestHandler, Mockito.times(1)).handle(_mockRequest, "Test Client Id", "Test Client Key");
     }
 }
