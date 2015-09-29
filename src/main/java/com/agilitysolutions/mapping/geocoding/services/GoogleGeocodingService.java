@@ -6,6 +6,8 @@ import com.agilitysolutions.mapping.geocoding.request.handlers.GoogleGeocoderReq
 import com.agilitysolutions.mapping.interfaces.geocoding.request.handlers.IRequestHandler;
 import com.agilitysolutions.mapping.interfaces.geocoding.services.IGeocodingService;
 
+import java.security.InvalidKeyException;
+
 public class GoogleGeocodingService implements IGeocodingService {
     private IRequestHandler requestHandler;
 
@@ -13,12 +15,11 @@ public class GoogleGeocodingService implements IGeocodingService {
         this.requestHandler = requestHandler;
     }
 
-    public void initialize(String clientId, String clientKey) {
-        requestHandler.initialize(clientId, clientKey);
-    }
-
     public Response getGeocode(Request request) {
         return requestHandler.handle(request);
     }
 
+    public Response getGeocode(Request request, String clientId, String clientKey) throws InvalidKeyException {
+        return requestHandler.handle(request, clientId, clientKey);
+    }
 }

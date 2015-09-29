@@ -7,6 +7,7 @@ import com.agilitysolutions.mapping.geocoding.response.handlers.GoogleGeocodeRes
 import com.agilitysolutions.mapping.interfaces.geocoding.request.builders.IRequestBuilder;
 import com.agilitysolutions.mapping.interfaces.geocoding.request.handlers.IRequestHandler;
 import com.agilitysolutions.mapping.interfaces.geocoding.response.handlers.IResponseHandler;
+import com.agilitysolutions.mapping.interfaces.geocoding.services.IGeocoderProviderService;
 import com.google.code.geocoder.Geocoder;
 import com.google.code.geocoder.model.GeocodeResponse;
 import com.google.code.geocoder.model.GeocoderRequest;
@@ -14,33 +15,36 @@ import com.google.code.geocoder.model.GeocoderRequest;
 import java.security.InvalidKeyException;
 
 public class GoogleGeocoderRequestHandler implements IRequestHandler {
-    private Geocoder _geocoder;
+    private IGeocoderProviderService _geocoderProviderService;
     private IRequestBuilder _requestBuilder;
     private IResponseHandler _responseHandler;
 
-    public GoogleGeocoderRequestHandler(Geocoder geocoder,
+    public GoogleGeocoderRequestHandler(IGeocoderProviderService geocoderProviderService,
                                         GoogleGeocoderRequestBuilder requestBuilder,
                                         GoogleGeocodeResponseHandler responseHandler) {
-        _geocoder = geocoder;
+        _geocoderProviderService = geocoderProviderService;
         _requestBuilder = requestBuilder;
         _responseHandler = responseHandler;
     }
 
-    public void initialize(String clientId, String clientKey) {
-        try {
-            _geocoder = new Geocoder(clientId, clientKey);
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        }
+    public Response handle(Request request) {
+        Geocoder geocoder = _geocoderProviderService.getGeocoder();
+
+        return getResponse(request, geocoder);
     }
 
-    public Response handle(Request request) {
-        Object geocoderRequest = _requestBuilder.build(request);
-        if (!(geocoderRequest instanceof GeocoderRequest)) {
-            return null;
-        }
+    public Response handle(Request request, String clientId, String clientKey) throws InvalidKeyException {
+        Geocoder geocoder = _geocoderProviderService.getGeocoder(clientId, clientKey);
 
-        GeocodeResponse geocoderResponse = _geocoder.geocode((GeocoderRequest) geocoderRequest);
+        return getResponse(request, geocoder);
+    }
+
+    private Response getResponse(Request request, Geocoder geocoder)
+    {
+        GeocoderRequest geocoderRequest = _requestBuilder.build(request);
+
+        GeocodeResponse geocoderResponse = geocoder.geocode(geocoderRequest);
         return _responseHandler.build(geocoderResponse);
     }
+
 }
