@@ -246,28 +246,6 @@ class GoogleGeocodingServiceIntegrationTest extends GroovyTestCase {
         assertEquals(-87.71081629999999, geometry.getViewport().getNortheast().getLongitude());
     }
 
-    void testBounds() {
-        Request request = new Request();
-
-        Bounds bounds = new Bounds();
-
-        Location northeast = new Location();
-        northeast.setLongitude(34.236144);
-        northeast.setLatitude(-118.500938);
-
-        bounds.setNortheast(northeast);
-
-        Location southwest = new Location();
-        southwest.setLongitude(34.172684);
-        southwest.setLatitude(-118.604794);
-
-        bounds.setSouthwest(southwest);
-
-        request.setBounds(bounds);
-
-        Response response = _googleGeocodingService.getGeocode(request);
-    }
-
     void testCityOnly() {
         Request request = new Request();
         request.setAddress("Toledo");
