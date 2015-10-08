@@ -1,11 +1,11 @@
 package com.agilitysolutions.mapping.geocoding.services;
 
-import com.agilitysolutions.mapping.interfaces.geocoding.services.IGeocoderProviderService;
+import com.agilitysolutions.mapping.interfaces.geocoding.services.GeocoderProvider;
 import com.google.code.geocoder.Geocoder;
 
 import java.security.InvalidKeyException;
 
-public class GeocoderProviderService implements IGeocoderProviderService {
+public class GeocoderProviderService implements GeocoderProvider {
     public Geocoder getGeocoder() {
         return new Geocoder();
     }

@@ -4,13 +4,13 @@ import com.agilitysolutions.mapping.geocoding.library.*;
 import com.agilitysolutions.mapping.geocoding.library.enums.AddressComponentType;
 import com.agilitysolutions.mapping.geocoding.library.enums.LocationType;
 import com.agilitysolutions.mapping.geocoding.library.enums.StatusCode;
-import com.agilitysolutions.mapping.interfaces.geocoding.response.handlers.IResponseHandler;
+import com.agilitysolutions.mapping.interfaces.geocoding.response.handlers.ResponseHandler;
 import com.google.code.geocoder.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GoogleGeocodeResponseHandler implements IResponseHandler {
+public class GoogleGeocodeResponseHandler implements ResponseHandler {
     public Response build(Object responseObject) {
         if (!(responseObject instanceof GeocodeResponse)) {
             return null;

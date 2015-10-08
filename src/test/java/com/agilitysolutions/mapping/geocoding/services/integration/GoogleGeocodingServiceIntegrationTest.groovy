@@ -1,6 +1,5 @@
 package com.agilitysolutions.mapping.geocoding.services.integration
 
-import com.agilitysolutions.mapping.geocoding.library.Bounds
 import com.agilitysolutions.mapping.geocoding.library.Location
 import com.agilitysolutions.mapping.geocoding.library.Request
 import com.agilitysolutions.mapping.geocoding.library.Response
@@ -12,15 +11,15 @@ import com.agilitysolutions.mapping.geocoding.request.handlers.GoogleGeocoderReq
 import com.agilitysolutions.mapping.geocoding.response.handlers.GoogleGeocodeResponseHandler
 import com.agilitysolutions.mapping.geocoding.services.GeocoderProviderService
 import com.agilitysolutions.mapping.geocoding.services.GoogleGeocodingService
-import com.agilitysolutions.mapping.interfaces.geocoding.request.builders.IRequestBuilder
-import com.agilitysolutions.mapping.interfaces.geocoding.response.handlers.IResponseHandler
-import com.agilitysolutions.mapping.interfaces.geocoding.services.IGeocoderProviderService
+import com.agilitysolutions.mapping.interfaces.geocoding.request.builders.RequestBuilder
+import com.agilitysolutions.mapping.interfaces.geocoding.response.handlers.ResponseHandler
+import com.agilitysolutions.mapping.interfaces.geocoding.services.GeocoderProvider
 import com.google.code.geocoder.GeocoderRequestBuilder
 
 class GoogleGeocodingServiceIntegrationTest extends GroovyTestCase {
-    private IGeocoderProviderService _geocoderProviderService;
-    private IRequestBuilder _requestBuilder;
-    private IResponseHandler _responseHandler;
+    private GeocoderProvider _geocoderProviderService;
+    private RequestBuilder _requestBuilder;
+    private ResponseHandler _responseHandler;
     private GeocoderRequestBuilder _geocoderRequestBuilder;
     private GoogleGeocoderRequestHandler _googleGeocoderRequestHandler;
     private GoogleGeocodingService _googleGeocodingService;
@@ -204,8 +203,8 @@ class GoogleGeocodingServiceIntegrationTest extends GroovyTestCase {
 
         addressComponent = result.getAddressComponents()[1];
 
-        assertEquals("New Trier", addressComponent.getLongName());
-        assertEquals("New Trier", addressComponent.getShortName());
+        assertEquals("New Trier Township", addressComponent.getLongName());
+        assertEquals("New Trier Township", addressComponent.getShortName());
         assertEquals(2, addressComponent.getAddressComponentTypes().size());
         assertEquals(AddressComponentType.AdministrativeAreaLevel3, addressComponent.getAddressComponentTypes()[0]);
         assertEquals(AddressComponentType.Political, addressComponent.getAddressComponentTypes()[1]);
