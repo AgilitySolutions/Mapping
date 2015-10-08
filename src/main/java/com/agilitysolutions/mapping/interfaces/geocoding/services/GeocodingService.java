@@ -5,7 +5,7 @@ import com.agilitysolutions.mapping.geocoding.library.Response;
 
 import java.security.InvalidKeyException;
 
-public interface IGeocodingService {
+public interface GeocodingService {
     Response getGeocode(Request request);
     Response getGeocode(Request request, String clientId, String clientKey) throws InvalidKeyException;
 }

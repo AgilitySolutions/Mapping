@@ -11,15 +11,15 @@ import com.agilitysolutions.mapping.geocoding.request.handlers.GoogleGeocoderReq
 import com.agilitysolutions.mapping.geocoding.response.handlers.GoogleGeocodeResponseHandler
 import com.agilitysolutions.mapping.geocoding.services.GeocoderProviderService
 import com.agilitysolutions.mapping.geocoding.services.GoogleGeocodingService
-import com.agilitysolutions.mapping.interfaces.geocoding.request.builders.IRequestBuilder
-import com.agilitysolutions.mapping.interfaces.geocoding.response.handlers.IResponseHandler
-import com.agilitysolutions.mapping.interfaces.geocoding.services.IGeocoderProviderService
+import com.agilitysolutions.mapping.interfaces.geocoding.request.builders.RequestBuilder
+import com.agilitysolutions.mapping.interfaces.geocoding.response.handlers.ResponseHandler
+import com.agilitysolutions.mapping.interfaces.geocoding.services.GeocoderProvider
 import com.google.code.geocoder.GeocoderRequestBuilder
 
 class GoogleGeocodingServiceIntegrationTest extends GroovyTestCase {
-    private IGeocoderProviderService _geocoderProviderService;
-    private IRequestBuilder _requestBuilder;
-    private IResponseHandler _responseHandler;
+    private GeocoderProvider _geocoderProviderService;
+    private RequestBuilder _requestBuilder;
+    private ResponseHandler _responseHandler;
     private GeocoderRequestBuilder _geocoderRequestBuilder;
     private GoogleGeocoderRequestHandler _googleGeocoderRequestHandler;
     private GoogleGeocodingService _googleGeocodingService;

@@ -3,13 +3,13 @@ package com.agilitysolutions.mapping.geocoding.request.builders;
 import com.agilitysolutions.mapping.geocoding.library.Bounds;
 import com.agilitysolutions.mapping.geocoding.library.Location;
 import com.agilitysolutions.mapping.geocoding.library.Request;
-import com.agilitysolutions.mapping.interfaces.geocoding.request.builders.IRequestBuilder;
+import com.agilitysolutions.mapping.interfaces.geocoding.request.builders.RequestBuilder;
 import com.google.code.geocoder.GeocoderRequestBuilder;
 import com.google.code.geocoder.model.GeocoderRequest;
 import com.google.code.geocoder.model.LatLng;
 import com.google.code.geocoder.model.LatLngBounds;
 
-public class GoogleGeocoderRequestBuilder implements IRequestBuilder {
+public class GoogleGeocoderRequestBuilder implements RequestBuilder {
     private GeocoderRequestBuilder _geocoderRequestBuilder;
 
     public GoogleGeocoderRequestBuilder(GeocoderRequestBuilder geocoderRequestBuilder) {

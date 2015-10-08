@@ -5,7 +5,7 @@ import com.agilitysolutions.mapping.geocoding.library.Response;
 
 import java.security.InvalidKeyException;
 
-public interface IRequestHandler {
+public interface RequestHandler {
     Response handle(Request request);
     Response handle(Request request, String clientId, String clientKey) throws InvalidKeyException;
 }
