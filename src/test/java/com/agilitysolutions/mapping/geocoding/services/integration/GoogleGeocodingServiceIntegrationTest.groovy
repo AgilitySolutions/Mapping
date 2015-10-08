@@ -203,8 +203,8 @@ class GoogleGeocodingServiceIntegrationTest extends GroovyTestCase {
 
         addressComponent = result.getAddressComponents()[1];
 
-        assertEquals("New Trier", addressComponent.getLongName());
-        assertEquals("New Trier", addressComponent.getShortName());
+        assertEquals("New Trier Township", addressComponent.getLongName());
+        assertEquals("New Trier Township", addressComponent.getShortName());
         assertEquals(2, addressComponent.getAddressComponentTypes().size());
         assertEquals(AddressComponentType.AdministrativeAreaLevel3, addressComponent.getAddressComponentTypes()[0]);
         assertEquals(AddressComponentType.Political, addressComponent.getAddressComponentTypes()[1]);
