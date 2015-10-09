@@ -13,8 +13,6 @@ public class GoogleGeocoderRequestBuilder implements RequestBuilder {
     private GeocoderRequestBuilder _geocoderRequestBuilder;
 
     public GoogleGeocoderRequestBuilder(GeocoderRequestBuilder geocoderRequestBuilder) {
-        if (geocoderRequestBuilder == null) throw new IllegalArgumentException();
-
         _geocoderRequestBuilder = geocoderRequestBuilder;
     }
 
