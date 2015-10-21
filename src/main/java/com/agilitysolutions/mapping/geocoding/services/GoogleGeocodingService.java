@@ -9,17 +9,17 @@ import com.agilitysolutions.mapping.interfaces.geocoding.services.GeocodingServi
 import java.security.InvalidKeyException;
 
 public class GoogleGeocodingService implements GeocodingService {
-    private RequestHandler requestHandler;
+    private RequestHandler _requestHandler;
 
     public GoogleGeocodingService(GoogleGeocoderRequestHandler requestHandler) {
-        this.requestHandler = requestHandler;
+        _requestHandler = requestHandler;
     }
 
     public Response getGeocode(Request request) {
-        return requestHandler.handle(request);
+        return _requestHandler.handle(request);
     }
 
     public Response getGeocode(Request request, String clientId, String clientKey) throws InvalidKeyException {
-        return requestHandler.handle(request, clientId, clientKey);
+        return _requestHandler.handle(request, clientId, clientKey);
     }
 }
